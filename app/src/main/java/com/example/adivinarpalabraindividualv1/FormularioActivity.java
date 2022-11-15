@@ -16,12 +16,12 @@ public class FormularioActivity extends AppCompatActivity {
     int posicionF;
     Partida partida;
     EditText nombre, descripcion;
+    Boolean cemaforoNovea = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formularios);
-        Bundle extras = getIntent().getExtras();
         Intent recogerPartida = getIntent();
         partida = (Partida) recogerPartida.getSerializableExtra("partida");
 
@@ -43,27 +43,49 @@ public class FormularioActivity extends AppCompatActivity {
     }
 
     public void borrarPalabra(View view) {
-        palabras.remove(posicionF);
-        Toast.makeText(this, "Se borró la palabra: " + nombre.getText(), Toast.LENGTH_SHORT).show();
-        borrarCamposPalabra();
+
+        if (cemaforoNovea) {
+
+            palabras.remove(posicionF);
+            Toast.makeText(this, "Se borró la palabra: " + nombre.getText(), Toast.LENGTH_SHORT).show();
+            borrarCamposPalabra();
+            cemaforoNovea = false;
+        }
+
     }
 
     public void modificarPalabra(View view) {
 
-        if(!nombre.equals("") && !descripcion.equals("")){
+        if (cemaforoNovea && !nombre.getText().toString().equals("")
+                && !descripcion.getText().toString().equals("")) {
 
-        palabras.get(posicionF).setNombre(nombre.getText().toString());
-        palabras.get(posicionF).setDescripcion(descripcion.getText().toString());
-        Toast.makeText(this, "La palabra" + palabras.get(posicionF).getNombre() +
-                " se modifico corrrectamente", Toast.LENGTH_SHORT).show();
-        borrarCamposPalabra();
-        }else if(nombre.equals("") && descripcion.equals("")){
-            Toast.makeText(this, "No se puede modificar una palabra que" +
-                    " previamente se ha borrado", Toast.LENGTH_SHORT).show();
+            if (palabras.contains(nombre.getText().toString())) {
+                palabras.get(posicionF).setNombre(nombre.getText().toString());
+                palabras.get(posicionF).setDescripcion(descripcion.getText().toString());
+                Toast.makeText(this, "La palabra" + palabras.get(posicionF).getNombre() +
+                        " se modifico corrrectamente", Toast.LENGTH_SHORT).show();
+
+            } else {
+                Toast.makeText(this, "No se puede modificar una" +
+                        " palabra a una palabra que ya existe", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "No se puede modificar una" +
+                    " palabra dejando un campo en blanco", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void añadirPalabra(View view) {
+
+        if (!nombre.getText().toString().equals("") &&
+                !descripcion.getText().toString().equals("")) {
+            if (!palabras.contains(nombre.getText().toString()))
+                palabras.add(new Palabra(nombre.getText().toString(), descripcion.getText().toString()));
         }
     }
 
     public void borrarCamposPalabra() {
+
         nombre.setText("");
         descripcion.setText("");
     }

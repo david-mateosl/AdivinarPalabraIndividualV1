@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Palabra implements Serializable {
 
-    private String nombre,descripcion;
+    private String nombre, descripcion;
 
     public Palabra() {
     }
@@ -32,7 +32,7 @@ public class Palabra implements Serializable {
 
     @Override
     public String toString() {
-        return "Palabra " +nombre;
+        return "Palabra: " + nombre;
     }
 }
 

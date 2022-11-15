@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         arrayInicial = new ArrayList<>();
 
         if (getIntent().hasExtra("partida")) {
-            Bundle extras = getIntent().getExtras();
             Intent recogerPartida = getIntent();
             partida = (Partida) recogerPartida.getSerializableExtra("partida");
         } else {
@@ -44,18 +43,12 @@ public class MainActivity extends AppCompatActivity {
             partida = new Partida(arrayInicial);
         }
 
-        /*ArrayList<Palabra> arrayInicial = new ArrayList<>();
-        arrayInicial.add(new Palabra("Murcielago","Mamifero volador"));
-        arrayInicial.add(new Palabra("Coche","Vehiculo común"));
-        arrayInicial.add(new Palabra("Platano","Fruta amarilla"));*/
-
         palabraDescripcion = findViewById(R.id.descripcionF);
         intentos = findViewById(R.id.intentos);
         palabraAadivinar = findViewById(R.id.palabraF);
         numeroDePalabras = findViewById(R.id.palabrasDisponibles);
 
-        //partida = new Partida(arrayInicial);
-        numeroDePalabras.setText("Numero de palabras disponibles: " + String.valueOf(partida.palabras.size()));
+        numeroDePalabras.setText("Numero de palabras disponibles: " + partida.palabras.size());
         palabraAadivinar.setText(String.valueOf(partida.iniciarPartida()));
 
         if (palabraAadivinar.getText().equals("No hay palabras disponibles")) {
@@ -65,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             palabraDescripcion.setText(String.valueOf(partida.palabra.getDescripcion()));
         }
+
         intentos.setText(partida.getIntentos() + "");
 
 
@@ -108,22 +102,19 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.mostrarPalabra://En este caso simplemente hago un Toast llamando al getter que me he creado en la clase partida para mostrar la palabra
                 Toast.makeText(MainActivity.this, "La palabra es: " + partida.getPalabraResuelta(), Toast.LENGTH_SHORT).show();
-
-                return true;
-            case R.id.anadirPalabra://El metodo anadirPalabra devuelve un objeto builder de Dialog, lo muestro en el main con .show
-                anadirPalabraConCuadroDialogo().show();
                 return true;
             case R.id.listaPalabras:
                 enviarPalabras();
                 return true;
             case R.id.importar:
-
                 partida.palabras = partida.importarPalabrasTxt(this);
+                Toast.makeText(this, "Partida Cargada con exito", Toast.LENGTH_SHORT).show();
                 numeroDePalabras.setText("Numero de palabras disponibles: " + String.valueOf(partida.palabras.size()));
-
+                palabraAadivinar.setText(String.valueOf(partida.iniciarPartida()));
                 return true;
             case R.id.exportar:
                 partida.exportarPalabrasTxt(this);
+                Toast.makeText(this, "Partida guardada con exito", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.salir:
                 Toast.makeText(this, "Hasta luego!", Toast.LENGTH_SHORT).show();
@@ -138,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void enviarPalabras() {
         Intent irAlista = new Intent(getApplicationContext(), EditarPalabraActivity.class);
-
-        // irAlista.putStringArrayListExtra("recogerPalabras",palabras);
 
         irAlista.putExtra("partida", partida);
 

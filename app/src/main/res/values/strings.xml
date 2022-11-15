@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">AdivinarPalabraIndividualV1</string>
+
+    <string name="inserta_una_palabra" />
+    <string name="mostrarpalabra">MostrarPalabra</string>
+    <string name="lista_de_palabras">Lista de palabras</string>
+    <string name="guardar_partida">Guardar Partida</string>
+    <string name="cargar_partida_guardada">Cargar partida guardada</string>
+    <string name="salir">Salir</string>
+    <string name="guardar_cargar">Guardar/Cargar</string>
 </resources>

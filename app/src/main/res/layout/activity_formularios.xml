@@ -52,6 +52,7 @@
         android:layout_width="77dp"
         android:layout_height="86dp"
         android:layout_marginEnd="52dp"
+        android:onClick="añadirPalabra"
         android:text="+"
         android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"

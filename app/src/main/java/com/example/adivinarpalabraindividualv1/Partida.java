@@ -26,14 +26,6 @@ public class Partida implements Serializable {
         this.palabras = palabrasConstructor;
     }
 
-    public ArrayList<String> iniciarPalabras() {
-        ArrayList<String> aux = new ArrayList<>();
-        aux.add("Murcielago");
-        aux.add("coche");
-        aux.add("java");
-        return aux;
-    }
-
     //Inciamos la partida, eligiendo una palabra al azar de la coleccion palabras y la transformamos a un array de chars.
     public String iniciarPartida() {
 
@@ -54,10 +46,11 @@ public class Partida implements Serializable {
 
             return String.valueOf(palabraEnChar);
 
-        }catch (IllegalArgumentException iae){
-           return "No hay palabras disponibles";
+        } catch (IllegalArgumentException iae) {
+            return "No hay palabras disponibles";
         }
     }
+
     public void exportarPalabrasTxt(Context contexto) {
         String filename = "palabras.txt";
 
@@ -91,7 +84,7 @@ public class Partida implements Serializable {
 
             BufferedReader bfr = new BufferedReader(fr);
             while ((contenido = bfr.readLine()) != null) {
-                palabraAux=new Palabra();
+                palabraAux = new Palabra();
                 System.out.println(contenido);
                 palabraAux.setNombre(contenido);
                 palabraAux.setDescripcion(bfr.readLine());
@@ -195,7 +188,6 @@ public class Partida implements Serializable {
 
         return repetida;
     }
-
 
 
 }

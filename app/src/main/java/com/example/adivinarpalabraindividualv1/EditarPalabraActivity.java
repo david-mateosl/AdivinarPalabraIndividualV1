@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.slider.RangeSlider;
+import com.google.android.material.slider.Slider;
+
 import java.util.ArrayList;
 
 public class EditarPalabraActivity extends AppCompatActivity {
@@ -22,6 +25,7 @@ public class EditarPalabraActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listas);
+
         Intent recogerPartida = getIntent();
         partida = (Partida) recogerPartida.getSerializableExtra("partida");
 
@@ -33,9 +37,10 @@ public class EditarPalabraActivity extends AppCompatActivity {
 
         ArrayAdapter adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1, android.R.id.text1, palabras);
 
-        ListView listaComp = (ListView) findViewById(R.id.listaDePalabras);
+        ListView listaComp = findViewById(R.id.listaDePalabras);
         listaComp.setAdapter(adaptador);
         listaComp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
@@ -52,7 +57,8 @@ public class EditarPalabraActivity extends AppCompatActivity {
         });
     }
 
-    public void borrar(View view){
+
+    public void borrar(View view) {
         palabras.clear();
         startActivity(getIntent());
         Toast.makeText(this, "Las palabras fueron borradas", Toast.LENGTH_SHORT).show();

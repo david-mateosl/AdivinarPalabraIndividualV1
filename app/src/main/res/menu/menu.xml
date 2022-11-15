@@ -3,20 +3,27 @@
 
     <item
         android:id="@+id/mostrarPalabra"
-        android:title="MostrarPalabra"></item>
-    <item
-        android:id="@+id/anadirPalabra"
-        android:title="Inserta una palabra"></item>
+        android:title="@string/mostrarpalabra" />
+
     <item
         android:id="@+id/listaPalabras"
-        android:title="Lista de palabras"></item>
+        android:title="@string/lista_de_palabras" />
     <item
-        android:id="@+id/exportar"
-        android:title="Guardar Partida"></item>
-    <item
-        android:id="@+id/importar"
-        android:title="Cargar partida guardada"></item>
+        android:id="@+id/Guardar_Cargar"
+        android:title="@string/guardar_cargar">
+
+        <menu>
+            <item
+                android:id="@+id/exportar"
+                android:title="@string/guardar_partida" />
+            <item
+                android:id="@+id/importar"
+                android:title="@string/cargar_partida_guardada" />
+        </menu>
+
+
+    </item>
     <item
         android:id="@+id/salir"
-        android:title="Salir"></item>
+        android:title="@string/salir" />
 </menu>
