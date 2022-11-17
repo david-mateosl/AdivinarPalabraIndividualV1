@@ -158,19 +158,23 @@ public class FormularioActivity extends AppCompatActivity {
     }
 
     public void añadirPalabra(View view) {
+
         boolean encontrado = false;
         for (Palabra palabras : partida.palabras) {
             if (palabras.getNombre().equals(nombre.getText().toString())) {
                 Toast.makeText(this, "Esa palabra ya existe", Toast.LENGTH_SHORT).show();
                 encontrado = true;
             }
+            Toast.makeText(this, "Error Campos en blanco", Toast.LENGTH_SHORT).show();
         }
-        if (!encontrado) {
+        if (!encontrado && !nombre.getText().toString().equals("") && !descripcion.getText().toString().equals("")) {
             if (!partida.palabras.contains(nombre.getText().toString())) {
                 partida.palabras.add(new Palabra(nombre.getText().toString(), descripcion.getText().toString()));
                 Toast.makeText(this, "La palabra: " + nombre.getText().toString()
                         + " se añadió correctamente", Toast.LENGTH_SHORT).show();
             }
+        }else{
+            Toast.makeText(this, "Error campos en blanco", Toast.LENGTH_SHORT).show();
         }
     }
 

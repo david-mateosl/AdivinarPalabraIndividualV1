@@ -193,17 +193,15 @@
     <EditText
         android:id="@+id/ingresarPalabraCorrecta"
         android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="380dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Ingresar Palabra"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/letra"
-        app:layout_constraintVertical_bias="0.46" />
+        app:layout_constraintTop_toBottomOf="@+id/letra" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

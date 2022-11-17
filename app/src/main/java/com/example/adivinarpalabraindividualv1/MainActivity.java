@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Partida Cargada con exito", Toast.LENGTH_SHORT).show();
                 numeroDePalabras.setText("Numero de palabras disponibles: " + String.valueOf(partida.palabras.size()));
                 palabraAadivinar.setText(String.valueOf(partida.iniciarPartida()));
+                ActivarBotones();
                 return true;
             case R.id.exportar:
                 partida.exportarPalabrasTxt(this);
@@ -129,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.importarSQL:
                 importarPalabrasSQL();
+                Toast.makeText(this, "Partida Cargada con exito", Toast.LENGTH_SHORT).show();
+                ActivarBotones();
                 return true;
             case R.id.exportarSQL:
                 exportarPalabrasSQL();
@@ -175,7 +178,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         numeroDePalabras.setText("Numero de palabras disponibles: " + partida.palabras.size());
+        palabraAadivinar.setText(String.valueOf(partida.iniciarPartida()));
 
+
+    }
+
+    public void ActivarBotones() {
+        nuevo.setEnabled(true);
+        adivinar.setEnabled(true);
     }
 
     public void exportarPalabrasSQL() {
