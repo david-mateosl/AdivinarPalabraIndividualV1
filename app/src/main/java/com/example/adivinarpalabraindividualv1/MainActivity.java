@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     TextView intentos, palabraAadivinar, numeroDePalabras, palabraDescripcion;
+    Button nuevo,adivinar;
     EditText letra;
     Partida partida;
     ArrayList<Palabra> arrayInicial;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         arrayInicial = new ArrayList<>();
+        nuevo = findViewById(R.id.nuevo);
+        adivinar = findViewById(R.id.adivinar);
 
         if (getIntent().hasExtra("partida")) {
             Intent recogerPartida = getIntent();
@@ -54,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         if (palabraAadivinar.getText().equals("No hay palabras disponibles")) {
 
             palabraDescripcion.setText("");
+            nuevo.setEnabled(false);
+            adivinar.setEnabled(false);
 
         } else {
             palabraDescripcion.setText(String.valueOf(partida.palabra.getDescripcion()));

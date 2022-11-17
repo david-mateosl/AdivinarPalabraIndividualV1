@@ -57,6 +57,12 @@ public class EditarPalabraActivity extends AppCompatActivity {
         });
     }
 
+    public void IrFormulario(View view){
+        Intent i = new Intent(this,FormularioActivity.class);
+        i.putExtra("partida",partida);
+        startActivity(i);
+    }
+
 
     public void borrar(View view) {
         palabras.clear();
