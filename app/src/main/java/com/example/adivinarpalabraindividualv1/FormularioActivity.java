@@ -52,8 +52,10 @@ public class FormularioActivity extends AppCompatActivity {
         if (datos != null) {
             if (palabras.size() != 0) {
                 posicionF = datos.getInt("posicionForm");
-                nombre.setText(partida.getPalabras().get(posicionF).getNombre());
-                descripcion.setText(partida.getPalabras().get(posicionF).getDescripcion());
+                if (posicionF != -1) {
+                    nombre.setText(partida.getPalabras().get(posicionF).getNombre());
+                    descripcion.setText(partida.getPalabras().get(posicionF).getDescripcion());
+                }
             } else {
                 posicionF = 0;
             }
@@ -123,15 +125,11 @@ public class FormularioActivity extends AppCompatActivity {
 
     public void borrarPalabra(View view) {
 
-        if (semaforo && !nombre.getText().toString().equals("")
-                && !descripcion.getText().toString().equals("")) {
-            if (palabras.contains(nombre.getText().toString())
-                    && palabras.contains(descripcion.getText().toString())) {
-                palabras.remove(posicionF);
-                Toast.makeText(this, "Se borró la palabra: " + nombre.getText(), Toast.LENGTH_SHORT).show();
-                borrarCamposPalabra();
-                semaforo = false;
-            }
+        if (semaforo && !nombre.getText().toString().equals("") && !descripcion.getText().toString().equals("")) {
+            palabras.remove(posicionF);
+            Toast.makeText(this, "Se borró la palabra: " + nombre.getText(), Toast.LENGTH_SHORT).show();
+            borrarCamposPalabra();
+            semaforo = false;
         } else {
             Toast.makeText(this, "Error campos en blanco", Toast.LENGTH_SHORT).show();
         }
@@ -160,15 +158,22 @@ public class FormularioActivity extends AppCompatActivity {
     }
 
     public void añadirPalabra(View view) {
-
-        if (!nombre.getText().toString().equals("") &&
-                !descripcion.getText().toString().equals("")) {
-            if (!palabras.contains(nombre.getText().toString()))
+        boolean encontrado = false;
+        for (Palabra palabras : partida.palabras) {
+            if (palabras.getNombre().equals(nombre.getText().toString())) {
+                Toast.makeText(this, "Esa palabra ya existe", Toast.LENGTH_SHORT).show();
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            if (!partida.palabras.contains(nombre.getText().toString())) {
                 partida.palabras.add(new Palabra(nombre.getText().toString(), descripcion.getText().toString()));
-            Toast.makeText(this, "La palabra: " + nombre.getText().toString()
-                    + " se añadió correctamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "La palabra: " + nombre.getText().toString()
+                        + " se añadió correctamente", Toast.LENGTH_SHORT).show();
+            }
         }
     }
+
 
     public void borrarCamposPalabra() {
 

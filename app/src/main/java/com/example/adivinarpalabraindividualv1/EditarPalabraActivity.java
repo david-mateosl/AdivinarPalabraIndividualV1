@@ -3,15 +3,11 @@ package com.example.adivinarpalabraindividualv1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.slider.RangeSlider;
-import com.google.android.material.slider.Slider;
 
 import java.util.ArrayList;
 
@@ -35,31 +31,27 @@ public class EditarPalabraActivity extends AppCompatActivity {
             Toast.makeText(this, "No se ha recogido ninguna palabra", Toast.LENGTH_LONG).show();
         }
 
-        ArrayAdapter adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1, android.R.id.text1, palabras);
+        ArrayAdapter<Palabra> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, palabras);
 
         ListView listaComp = findViewById(R.id.listaDePalabras);
         listaComp.setAdapter(adaptador);
-        listaComp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listaComp.setOnItemClickListener((adapterView, view, position, l) -> {
 
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            Intent irAformulario = new Intent(getApplicationContext(), FormularioActivity.class);
 
-                Intent irAformulario = new Intent(getApplicationContext(), FormularioActivity.class);
+            irAformulario.putExtra("partida", partida);
+            irAformulario.putExtra("palabraForm", partida);
+            irAformulario.putExtra("posicionForm", position);
 
-                irAformulario.putExtra("partida", partida);
-                irAformulario.putExtra("palabraForm", partida);
-                irAformulario.putExtra("posicionForm", position);
-
-                startActivity(irAformulario);
-
-            }
+            startActivity(irAformulario);
 
         });
     }
 
-    public void IrFormulario(View view){
-        Intent i = new Intent(this,FormularioActivity.class);
-        i.putExtra("partida",partida);
+    public void IrFormulario(View view) {
+        Intent i = new Intent(this, FormularioActivity.class);
+        i.putExtra("posicionForm", -1);
+        i.putExtra("partida", partida);
         startActivity(i);
     }
 

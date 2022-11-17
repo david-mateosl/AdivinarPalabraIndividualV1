@@ -1,6 +1,10 @@
 package com.example.adivinarpalabraindividualv1;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -55,8 +59,6 @@ public class Partida implements Serializable {
         String filename = "palabras.txt";
 
         try {
-            // FileOutputStream fos = contexto.openFileOutput(filename,Context.MODE_PRIVATE);
-            //  ObjectOutputStream os = new ObjectOutputStream(fos);
             FileWriter fw = new FileWriter(new File(contexto.getFilesDir(), filename));
             for (int i = 0; i < palabras.size(); i++) {
                 //   os.writeObject(palabras.get(i));
@@ -65,8 +67,6 @@ public class Partida implements Serializable {
                 fw.write(palabras.get(i).getDescripcion());
                 fw.write("\n");
             }
-            // os.flush();
-            // os.close();
             fw.flush();
             fw.close();
         } catch (IOException e) {
@@ -100,9 +100,18 @@ public class Partida implements Serializable {
         return palabras;
     }
 
-    public void anadirPalabra(Palabra palabraAnadida) {
-        palabras.add(palabraAnadida);
+
+
+    public void exportarPalabrasSQL() {
+
+
+
+
     }
+
+  /* public void anadirPalabra(Palabra palabraAnadida) {
+        palabras.add(palabraAnadida);
+    }*/
 
 
     public String adivinar(char letraIntroducida) {
@@ -138,13 +147,13 @@ public class Partida implements Serializable {
         this.intentos = intentos;
     }
 
-    public void setPalabra(String palabra) {
+   /* public void setPalabra(String palabra) {
         palabraEnChar = palabra.toCharArray();
     }
 
     public char[] getPalabraEnChar() {
         return palabraEnChar;
-    }
+    }*/
 
     public ArrayList<Palabra> getPalabras() {
         return palabras;
@@ -188,6 +197,4 @@ public class Partida implements Serializable {
 
         return repetida;
     }
-
-
 }

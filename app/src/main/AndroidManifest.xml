@@ -10,6 +10,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/imagen_app"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/imagen_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AdivinarPalabraIndividualV1"

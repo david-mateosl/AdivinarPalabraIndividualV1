@@ -16,7 +16,7 @@ public final class Estructura_BBDD {
 
     private static final String TEXT_TYPE = " TEXT";
     static final String SQL_CREATE_ENTRIES = "CREATE TABLE "
-            + Estructura_BBDD.TABLE_NAME + " (" + Estructura_BBDD.NOMBRE_COLUMNA1 + " TEXT PRIMARY KEY, "
+            + Estructura_BBDD.TABLE_NAME + " (" + Estructura_BBDD.NOMBRE_COLUMNA1 + " TEXT, "
             + Estructura_BBDD.NOMBRE_COLUMNA2 + TEXT_TYPE + " )";
 
     static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + Estructura_BBDD.TABLE_NAME;

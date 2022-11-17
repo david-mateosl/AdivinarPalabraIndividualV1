@@ -20,9 +20,24 @@
                 android:id="@+id/importar"
                 android:title="@string/cargar_partida_guardada" />
         </menu>
+    </item>
+
+    <item
+        android:id="@+id/Guardar_Cargar_SQLlite"
+        android:title="@string/guardar_cargar_SQL">
+
+        <menu>
+            <item
+                android:id="@+id/exportarSQL"
+                android:title="@string/guardar_partida" />
+            <item
+                android:id="@+id/importarSQL"
+                android:title="@string/cargar_partida_guardada" />
+        </menu>
 
 
     </item>
+
     <item
         android:id="@+id/salir"
         android:title="@string/salir" />

@@ -1,5 +1,5 @@
 <resources>
-
+    <string name="app_name">Adivina Palabra</string>
     <string name="inserta_una_palabra" />
     <string name="mostrarpalabra">MostrarPalabra</string>
     <string name="lista_de_palabras">Lista de palabras</string>
@@ -7,4 +7,5 @@
     <string name="cargar_partida_guardada">Cargar partida guardada</string>
     <string name="salir">Salir</string>
     <string name="guardar_cargar">Guardar/Cargar</string>
+    <string name="guardar_cargar_SQL">Guardar Cargar SQL</string>
 </resources>

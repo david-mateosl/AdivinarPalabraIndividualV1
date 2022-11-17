@@ -172,22 +172,38 @@
         android:id="@+id/palabrasDisponibles"
         android:layout_width="237dp"
         android:layout_height="47dp"
-        android:layout_marginTop="36dp"
         android:gravity="center|start"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/letra" />
+        app:layout_constraintTop_toBottomOf="@+id/ingresarPalabraCorrecta"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/descripcionF"
         android:layout_width="240dp"
         android:layout_height="61dp"
-        android:layout_marginTop="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/palabrasDisponibles" />
+        app:layout_constraintTop_toBottomOf="@+id/palabrasDisponibles"
+        app:layout_constraintVertical_bias="0.053" />
+
+    <EditText
+        android:id="@+id/ingresarPalabraCorrecta"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="380dp"
+        android:ems="10"
+        android:hint="Ingresar Palabra"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/letra"
+        app:layout_constraintVertical_bias="0.46" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
