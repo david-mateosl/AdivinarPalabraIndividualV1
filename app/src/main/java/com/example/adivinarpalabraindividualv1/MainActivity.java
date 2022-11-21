@@ -136,6 +136,17 @@ public class MainActivity extends AppCompatActivity {
             case R.id.exportarSQL:
                 exportarPalabrasSQL();
                 return true;
+            case R.id.exportar_B:
+                partida.exportarPalabrasBinario(this);
+                Toast.makeText(this, "Partida guardada con exito", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.importar_B:
+                partida.importarPalabrasBinario(this);
+                Toast.makeText(this, "Partida Cargada con exito", Toast.LENGTH_SHORT).show();
+                numeroDePalabras.setText("Numero de palabras disponibles: " + String.valueOf(partida.palabras.size()));
+                palabraAadivinar.setText(String.valueOf(partida.iniciarPartida()));
+                palabraDescripcion.setText(partida.palabra.getDescripcion());
+                return true;
             case R.id.salir:
                 Toast.makeText(this, "Hasta luego!", Toast.LENGTH_SHORT).show();
                 finishAffinity();

@@ -23,6 +23,20 @@
     </item>
 
     <item
+        android:id="@+id/Guardar_Cargar_B"
+        android:title="@string/guardar_cargar_b">
+
+        <menu>
+            <item
+                android:id="@+id/exportar_B"
+                android:title="@string/guardar_partida_b"/>
+            <item
+                android:id="@+id/importar_B"
+                android:title="@string/cargar_partida_guardada_b"/>
+        </menu>
+    </item>
+
+    <item
         android:id="@+id/Guardar_Cargar_SQLlite"
         android:title="@string/guardar_cargar_SQL">
 

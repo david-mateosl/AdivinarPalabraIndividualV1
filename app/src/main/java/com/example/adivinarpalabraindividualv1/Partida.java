@@ -8,11 +8,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
@@ -100,12 +106,40 @@ public class Partida implements Serializable {
         return palabras;
     }
 
+    public void exportarPalabrasBinario(Context contexto) {
+        String filename = "palabras.dat";
+        try {
+            FileOutputStream fileOut = new FileOutputStream(new File(contexto.getFilesDir(), filename));
+            ObjectOutputStream dataOs = new ObjectOutputStream(fileOut);
+            for (Palabra palabrasAux : palabras) {
+                dataOs.writeObject(palabrasAux);
+            }
+            dataOs.close();
+        } catch (IOException e) {
+            Toast.makeText(contexto, "No se pudo escribir el fichero", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    public void importarPalabrasBinario(Context contexto) {
+        palabras.clear();
+        String filename = "palabras.dat";
+        try {
 
-    public void exportarPalabrasSQL() {
+            FileInputStream filein = new FileInputStream(new File(contexto.getFilesDir(), filename));
+            ObjectInputStream dataIS = new ObjectInputStream(filein);
+            Palabra palabra;
 
+            while (true) {
+                palabra = (Palabra) dataIS.readObject();
+                palabras.add(palabra);
+            }
+        } catch (EOFException eofe) {
 
-
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            Toast.makeText(contexto, "No se pudo leer el fichero", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

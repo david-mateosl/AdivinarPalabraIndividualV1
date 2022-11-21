@@ -8,4 +8,7 @@
     <string name="salir">Salir</string>
     <string name="guardar_cargar">Guardar/Cargar</string>
     <string name="guardar_cargar_SQL">Guardar Cargar SQL</string>
+    <string name="cargar_partida_guardada_b">cargar_partida_guardada_B</string>
+    <string name="guardar_partida_b">guardar_partida_B</string>
+    <string name="guardar_cargar_b">guardar_cargar_B</string>
 </resources>
